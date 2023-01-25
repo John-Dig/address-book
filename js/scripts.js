@@ -53,7 +53,7 @@ function Contact(fName, lName, phNumber) {
   this.lName = lName;
   this.phNumber = phNumber;
 };
-
+//#region main 
 //Contact method for returning full name of the contact it is called on
 Contact.prototype.fName = function() {
   return this.fName + " " + this.lName;
@@ -67,3 +67,19 @@ let contactC = new Contact("You", "Rork", "555-5543")
 addressBook.addContact(contactA);
 addressBook.addContact(contactB);
 addressBook.addContact(contactC);
+//#endregion
+
+//User Interface Logic ---------
+function handleFormSubmission(e) {
+  e.preventDefault();
+  const inputtedFirstName = document.querySelector("input#new-first-name").value;
+  const inputtedLastName = document.querySelector("input#new-last-name").value;
+  const inputtedPhoneNumber = document.querySelector("input#new-phone-number").value;
+  let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
+  addressBook.addContact(newContact);
+  console.log(addressBook.contacts);
+}
+
+window.addEventListener("load", function(){
+  this.document.querySelector("form#new-contact").addEventListener("submit", handleFormSubmission);
+});
