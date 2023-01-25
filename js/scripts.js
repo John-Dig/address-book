@@ -25,6 +25,27 @@ AddressBook.prototype.findC = function(id) {
   return false;
 };
 
+//AddressBook method for deleting contacts
+AddressBook.prototype.deleteC = function(id) {
+  if (this.contacts[id] === undefined) {
+    return false;
+  }
+  delete this.contacts[id];
+  return true
+};
+
+//optional AddressBook method for Updating contacts
+AddressBook.prototype.updateC = function(id,fName, lName, phNumber) {
+  if (this.contacts[id] === undefined) {
+    return false;
+  }
+  console.log(this.contacts[id]);
+  console.log(this.fName);
+  this.contacts[id].fName = fName;
+  this.contacts[id].lName = lName;
+  this.contacts[id].phNumber = phNumber;
+}
+
 // Business Logic for Contacts
 // Contact Constructor
 function Contact(fName, lName, phNumber) {
@@ -45,3 +66,4 @@ let contactB = new Contact("Sam", "Runs", "1800-433-8888");
 let contactC = new Contact("You", "Rork", "555-5543")
 addressBook.addContact(contactA);
 addressBook.addContact(contactB);
+addressBook.addContact(contactC);
