@@ -60,7 +60,7 @@ Contact.prototype.fName = function() {
 };
 
 // fake console
-let addressBook = new AddressBook;
+//let addressBook = new AddressBook;
 let contactA = new Contact("Richard", "Pants", "911-9112-911");
 let contactB = new Contact("Sam", "Runs", "1800-433-8888");
 let contactC = new Contact("You", "Rork", "555-5543")
@@ -70,6 +70,22 @@ addressBook.addContact(contactC);
 //#endregion
 
 //User Interface Logic ---------
+let addressBook = new AddressBook;
+
+function listContacts(addressBookToDisplay) {
+  let contactsDiv = document.querySelector("div#contacts");
+  contactsDiv.innerText = null;
+  const ul = document.createElement("ul");
+  Object.keys(addressBookToDisplay.contacts).forEach(function(key) {
+    const contact = addressBookToDisplay.findContact(key);
+    const li = document.createElement("li");
+    li.append(contact.fullName());
+    li.setAttribute("id", contact.id);
+    ul.append(li);
+  });
+  contactdDiv.append(ul);
+}
+
 function handleFormSubmission(e) {
   e.preventDefault();
   const inputtedFirstName = document.querySelector("input#new-first-name").value;
