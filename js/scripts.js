@@ -60,17 +60,16 @@ Contact.prototype.fName = function() {
 };
 
 // fake console
-//let addressBook = new AddressBook;
 let contactA = new Contact("Richard", "Pants", "911-9112-911");
 let contactB = new Contact("Sam", "Runs", "1800-433-8888");
 let contactC = new Contact("You", "Rork", "555-5543")
-addressBook.addContact(contactA);
-addressBook.addContact(contactB);
-addressBook.addContact(contactC);
+addressBook1.addContact(contactA);
+addressBook1.addContact(contactB);
+addressBook1.addContact(contactC);
 //#endregion
 
 //User Interface Logic ---------
-let addressBook = new AddressBook;
+let addressBook1 = new AddressBook;
 
 function listContacts(addressBookToDisplay) {
   let contactsDiv = document.querySelector("div#contacts");
@@ -83,7 +82,7 @@ function listContacts(addressBookToDisplay) {
     li.setAttribute("id", contact.id);
     ul.append(li);
   });
-  contactdDiv.append(ul);
+  contactDiv.append(ul);
 }
 
 function handleFormSubmission(e) {
@@ -92,8 +91,8 @@ function handleFormSubmission(e) {
   const inputtedLastName = document.querySelector("input#new-last-name").value;
   const inputtedPhoneNumber = document.querySelector("input#new-phone-number").value;
   let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
-  addressBook.addContact(newContact);
-  console.log(addressBook.contacts);
+  addressBook1.addContact(newContact);
+  console.log(addressBook1.contacts);
 }
 
 window.addEventListener("load", function(){
